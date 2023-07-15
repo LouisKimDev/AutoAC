@@ -79,9 +79,7 @@ class motorz:
     def main(self):
         try:
             while True:
-                if (time.localtime().tm_hour == \
-                    23 or 2 or 3 or 8 or 11 or 14 or 17 or 20) \
-                    and time.localtime().tm_min == 0 :
+                if ((time.localtime().tm_hour % 3 == 0) and (time.localtime().tm_min == 0)) :
 
                     time.sleep(240)
 
@@ -108,20 +106,6 @@ class motorz:
 
                     self.PrintTime()
                     self.Servo2Routine(4) # 02:39:00
-
-                    # print('3hr routine ended')
-
-                # elif time.localtime().tm_min % 30 == 0 and \
-                #     time.localtime().tm_sec == 0:
-
-                #     self.PrintTime()
-                #     time.sleep(240 + self.COUNT * 20)
-
-                #     self.Servo2Routine(4)
-
-                #     self.COUNT += 1
-
-                #     print('30min routine ended')
 
         except KeyboardInterrupt:
             self.pwm1.stop()
